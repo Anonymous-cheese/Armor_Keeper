@@ -1,0 +1,71 @@
+============================
+Armor_Keeper - Troubleshooting Context
+============================
+
+PLUGIN PURPOSE:
+---------------
+Keeps a player's equipped armor and offhand shield when they die.
+All other items drop normally.
+
+CODE ENTRY POINT:
+-----------------
+Main class: com.toasthax.armorkeeper.ArmorKeeperPlugin
+plugin.yml path: src/main/resources/plugin.yml
+Permission node: armorkeeper.keep
+
+RUNTIME ENVIRONMENT:
+--------------------
+- PaperMC version: 1.21.10
+- Java version: 17 (or higher)
+- Build system: Maven
+- Output JAR: D:\Projects\Armor_Keeper\target\Armor_Keeper.jar
+
+TYPICAL LOG MESSAGES:
+---------------------
+[Armor_Keeper] Armor_Keeper enabled.
+[Armor_Keeper] Armor_Keeper disabled. (on shutdown)
+
+TROUBLESHOOTING CHECKLIST:
+--------------------------
+1. **Plugin not loading**
+   - Verify JAR is in /plugins/
+   - Check server console for `Invalid plugin.yml` errors
+   - Ensure `plugin.yml` main field matches: `com.toasthax.armorkeeper.ArmorKeeperPlugin`
+
+2. **Armor not being restored**
+   - Confirm player has permission `armorkeeper.keep`
+   - Ensure no other plugin (e.g., KeepInventory mods) overrides death drops
+   - Check for console errors mentioning `NullPointerException` or `IllegalArgumentException`
+
+3. **Items duplicating**
+   - Verify `removeSingleMatching()` in ArmorKeeperPlugin.java correctly removes kept items from drops
+   - Confirm player inventory isn't being modified by other plugins during respawn
+
+4. **Project won't compile**
+   - Run `mvn clean package` to rebuild
+   - Ensure PaperMC Maven repo in pom.xml:
+     https://repo.papermc.io/repository/maven-public/
+
+5. **Permission system not responding**
+   - Test with LuckPerms:
+     `/lp user <player> permission info`
+   - Ensure default permission is set to `true` in plugin.yml
+
+FOLDER STRUCTURE:
+-----------------
+Armor_Keeper/
+ ├─ pom.xml
+ ├─ src/
+ │   ├─ main/
+ │   │   ├─ java/com/toasthax/armorkeeper/ArmorKeeperPlugin.java
+ │   │   └─ resources/plugin.yml
+ └─ target/Armor_Keeper.jar
+
+NOTES FOR FUTURE DEVELOPMENT:
+-----------------------------
+- Add a configurable whitelist or blacklist for what items to keep.
+- Optional toggle command `/armorkeeper toggle`.
+- Consider adding per-world enable/disable via config.yml.
+- Could integrate with economy plugins for "death insurance."
+
+============================

@@ -1,0 +1,11 @@
+name: Armor_Keeper
+version: 1.0.0
+main: com.toasthax.armorkeeper.ArmorKeeperPlugin
+api-version: '1.21'
+authors: [toasthax]
+description: Keeps armor + shield on death; all other items drop normally.
+
+permissions:
+  armorkeeper.keep:
+    description: Players with this permission keep armor and offhand shield on death.
+    default: true
