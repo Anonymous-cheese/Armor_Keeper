@@ -1,17 +1,19 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.toasthax</groupId>
-  <artifactId>lapisportalsplus</artifactId>
-  <version>1.3.0</version>
-  <name>LapisPortalsPlus</name>
-  <description>Physical frame portals with chest linking (Paper 1.21.8)</description>
-  <packaging>jar</packaging>
+  <artifactId>Armor_Keeper</artifactId>
+  <version>1.0.0</version>
+  <name>Armor_Keeper</name>
+  <description>Keeps armor and shield on death; other items drop normally.</description>
 
   <properties>
-    <maven.compiler.release>21</maven.compiler.release>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+    <!-- Paper 1.21.x API -->
+    <paper.api.version>1.21-R0.1-SNAPSHOT</paper.api.version>
   </properties>
 
   <repositories>
@@ -25,7 +27,7 @@
     <dependency>
       <groupId>io.papermc.paper</groupId>
       <artifactId>paper-api</artifactId>
-      <version>1.21.8-R0.1-SNAPSHOT</version>
+      <version>${paper.api.version}</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>
@@ -37,9 +39,22 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.11.0</version>
         <configuration>
-          <release>21</release>
+          <release>17</release>
         </configuration>
       </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.5.0</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals><goal>shade</goal></goals>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
+    <finalName>Armor_Keeper</finalName>
   </build>
 </project>

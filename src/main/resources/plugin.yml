@@ -1,17 +1,11 @@
-name: LapisPortalsPlus
-main: com.toasthax.lapisportalsplus.LapisPortalsPlus
-version: 1.3.0
-api-version: "1.21"
-authors: ["Philip Cartier"]
+name: Armor_Keeper
+version: 1.0.0
+main: com.toasthax.armorkeeper.ArmorKeeperPlugin
+api-version: '1.21'
+authors: [toasthax]
+description: Keeps armor + shield on death; all other items drop normally.
+
 permissions:
-  lapisportalsplus.use:
+  armorkeeper.keep:
+    description: Players with this permission keep armor and offhand shield on death.
     default: true
-  lapisportalsplus.create:
-    default: op
-  lapisportalsplus.admin:
-    default: op
-commands:
-  lpp:
-    description: LapisPortalsPlus admin command
-    permission: lapisportalsplus.admin
-    usage: "/lpp debug [on|off]"
