@@ -1,0 +1,52 @@
+# === LapisPortalsPlus 1.3.0 ===
+worlds:
+  allow: []
+  deny: []
+
+inner_size:
+  min_width: 2
+  min_height: 3
+  max_width: 21
+  max_height: 21
+
+frame_blocks:
+  - LAPIS_BLOCK
+  - DIAMOND_BLOCK
+  - GLOWSTONE
+
+# Teleport
+teleport_cooldown_seconds: 2
+tele_delay_seconds: 0
+
+# Visuals
+edge_particles: true
+edge_particle_type: PORTAL
+teleport_particle_type: END_ROD
+lightning_on_teleport: false
+tele_sickness:
+  enabled: false
+  duration_seconds: 5
+
+# Continuous edge outline only when LINKED
+linked_outline:
+  enabled: true
+  interval_ticks: 15
+  density: 0.5   # lower = fewer dots (0.25..1.0)
+
+# Optional interior swirl when LINKED (toggleable)
+interior_particles:
+  enabled: false
+  type: ENCHANTMENT_TABLE
+  count: 8
+  interval_ticks: 15
+
+messages:
+  created: "§aPortal created. Chest key linking active."
+  destroyed: "§cPortal destroyed."
+  linked: "§aLinked to portal §b{target}§a using key §e{key}."
+  key_in_use: "§eKey is already linking two portals. Use a different item."
+  no_target: "§7This portal is unlinked. Add items to the chest to pair it."
+  world_blocked: "§cPortals disabled in this world."
+  no_permission_create: "§cYou don't have permission to create portals."
+  chest_required: "§cPlace a single chest touching the frame to link this portal."
+  cross_world_blocked: "§cCross-world links are disabled."
